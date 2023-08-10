@@ -1,5 +1,6 @@
 using Core.Interfaces;
 using Infrastructure.Data;
+using Interfaces.Entities;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,7 @@ builder.Services.AddDbContext<StoreContext>(options =>
             });
 
 //Services
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); //repositório genérico
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
