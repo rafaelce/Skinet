@@ -20,6 +20,7 @@ builder.Services.AddDbContext<StoreContext>(options =>
 //Services
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); //repositório genérico
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //adiciona automap a aplicação
 
 var app = builder.Build();
 
